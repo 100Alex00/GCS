@@ -1,0 +1,73 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class "Console\n(Console)" as Console {
+    - id: int
+    - name: str
+    - manufacturer: str
+    - release_year: int
+    - price: float
+    - stock: int
+    - description: str
+    + save()
+    + delete()
+    + get_all()
+    + get_by_id()
+}
+
+class "Accessory\n(Accessory)" as Accessory {
+    - id: int
+    - name: str
+    - console_id: int
+    - price: float
+    - stock: int
+    + save()
+    + delete()
+    + get_all()
+    + get_by_id()
+}
+
+class "Client\n(Client)" as Client {
+    - id: int
+    - name: str
+    - email: str
+    - phone: str
+    - address: str
+    + save()
+    + delete()
+    + get_all()
+    + get_by_id()
+}
+
+class "Order\n(Order)" as Order {
+    - id: int
+    - client_id: int
+    - order_date: date
+    - total_amount: float
+    + save()
+    + delete()
+    + get_all()
+    + get_by_id()
+    + add_item()
+    + remove_item()
+    + get_items()
+}
+
+class "OrderItem\n(OrderItem)" as OrderItem {
+    - id: int
+    - order_id: int
+    - console_id: int
+    - accessory_id: int
+    - quantity: int
+    - price: float
+    + save()
+    + delete()
+    + get_by_order()
+    + get_by_id()
+}
+
+Console "1" -- "0..*" Accessory : contains
+Client "1" -- "0..*" Order : formalizes
+Order "1" -- "1..*" OrderItem : contains
+OrderItem "0..*" -- "1" Console : relates to
+OrderItem "0..*" -- "1" Accessory : relates to

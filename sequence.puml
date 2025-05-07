@@ -1,0 +1,19 @@
+@startuml
+actor "Администратор" as A
+participant "Интерфейс" as I
+participant "База данных" as DB
+
+A -> I: Открытие программы
+I -> DB: Инициализация БД
+DB --> I: Готово
+
+A -> I: Выбор "Управление консолями"
+I -> DB: SELECT * FROM consoles
+DB --> I: Список консолей
+I --> A: Отображение списка
+
+A -> I: Выбор "Добавить консоль"
+I -> DB: INSERT INTO consoles
+DB --> I: ID новой консоли
+I --> A: Подтверждение добавления
+@enduml
