@@ -1,0 +1,10 @@
+*.db
+__pycache__
+*.pyc
+*.pyo
+*.pyc
+*.log
+*.sqlite3
+*.pdf
+*.pyc
+*.db-journal

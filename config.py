@@ -1,0 +1,1 @@
+DB_NAME = "shoe_store.db"
